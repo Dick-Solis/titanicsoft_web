@@ -1,40 +1,47 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import LoginForm from "./components/login-form.js";
-import SignupForm from "./components/signup-form";
-import { colors } from "./styles";
+import { colors, typography } from "./styles";
+import tienda from "./images/supermarket_logo.svg"
+import LoginForm from "./components/login-form";
 
-const CustomLink = styled.button`
-  color: ${colors.blue};
-  font-weight: 700;
-  font-size: 1rem;
-  margin-top: 32px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    color: ${colors.green[400]};
-  }
+const ContainerBody = styled.div`
+  margin-top: 100px;
+  color: white;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 100px;
 `;
 
-const UnauthenticatedApp = () => {
-  const [showLogin, setShowLogin] = useState(true);
-  function handleClick(event) {
-    // event.preventDefault();
-    setShowLogin(!showLogin);
-  }
-  return (
-    <div>
+const ContainerLogo = styled.div`
+  border-radius: 20px;
+  border-color: white;
+  border-style: solid;
+  ${typography.head.md};
+  display: inline-block;
+  padding: 50px;
+`
 
-      {showLogin ? (
-        <LoginForm />
-      ) : (
-        <SignupForm />
-      )}
-      <CustomLink onClick={handleClick}>
-        {showLogin ? "Create Account" : "Log in"}
-      </CustomLink>
-    </div>
+const ContainerLogin = styled.div`
+  /* background-color: ${colors.white}; */
+`
+
+const UnauthenticatedApp = () => {
+
+  return (
+    <ContainerBody>
+      <ContainerLogo>
+        <p>Pagina de Ventas</p>
+        <img src={tienda} alt="mi-tienda" />
+        <p>Supermarket Dick</p>
+      </ContainerLogo>
+
+      <ContainerLogin>
+        <LoginForm/>
+      </ContainerLogin>
+
+    </ContainerBody>
   );
 };
 
